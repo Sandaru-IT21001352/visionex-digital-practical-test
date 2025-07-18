@@ -23,11 +23,11 @@ const Swimlane: React.FC<SwimlaneProps> = ({ id, title, tasks }) => {
   return (
     <div
       ref={setNodeRef}
-      className={`
-        border border-gray-300 rounded-lg p-4 mb-4 w-full min-h-[200px]
-        transition-colors duration-200 bg-[#F4F5F6] `}
+      // className={`
+      //   border border-gray-300 rounded-lg p-4 mb-4 w-full min-h-[200px]
+      //   transition-colors duration-200 bg-[#F4F5F6] `}
     >
-      <h2 className="text-lg font-semibold text-gray-800">{title}</h2>
+      {/* <h2 className="text-lg font-semibold text-gray-800">{title}</h2> */}
 
       <SortableContext items={taskIds} strategy={verticalListSortingStrategy}>
         <div className="space-y-2">

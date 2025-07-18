@@ -10,11 +10,6 @@ const poppins = Poppins({
   variable: "--poppins",
   weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
 });
-// const geistMono = Poppins({
-//   subsets: ["latin"],
-//   variable: "--poppins",
-//   weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
-// });
 
 export const metadata: Metadata = {
   title: "Board App",
@@ -35,11 +30,11 @@ export default function RootLayout({
         <Header />
 
         <div
-          className="flex divide-x divide-[#E6E8EC]"
+          className="flex divide-x divide-[#E6E8EC] h-full"
           style={{ height: "calc(100vh - 80px)" }}
         >
           <Sidebar />
-          <main className="flex-1 p-6 bg-white">{children}</main>
+          <main className="flex-1">{children}</main>
         </div>
       </body>
     </html>

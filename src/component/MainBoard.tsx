@@ -18,9 +18,10 @@ import Swimlane from "@/component/Swimlane";
 import DraggableTask from "@/component/DraggableTask";
 import { TaskStatus } from "@/types";
 import { get } from "http";
+import { MoreHorizontal } from "@/assets/icons";
 
 const SWIMLANES = [
-  { id: "to-do" as TaskStatus, title: "Todo" },
+  { id: "to-do" as TaskStatus, title: "To do" },
   { id: "in-progress" as TaskStatus, title: "In Progress" },
   { id: "approved" as TaskStatus, title: "Done" },
   { id: "rejected" as TaskStatus, title: "Rejected" },
@@ -120,15 +121,67 @@ const MainBoard = () => {
       onDragOver={handleDragOver}
       onDragEnd={handleDragEnd}
     >
-      <div className="flex flex-row justify-between items-start p-4 space-x-4 bg-gray-100 min-h-screen text-sm">
-        {swimlaneData.map((lane) => (
-          <Swimlane
-            key={lane.id}
-            id={lane.id}
-            title={lane.title}
-            tasks={lane.tasks}
-          />
-        ))}
+      <div className="h-full w-full">
+        <table className="h-full w-full table-fixed text-sm p-4 border border-gray-300">
+          <colgroup>
+            {swimlaneData.map((lane) => (
+              <col key={lane.id} className="w-1/4 min-w-[300px]" />
+            ))}
+          </colgroup>
+          <thead>
+            <tr>
+              {swimlaneData.map((lane) => (
+                <th
+                  key={lane.id}
+                  className="px-4 py-2 text-left border-b border-r border-gray-300 last:border-r-0"
+                  style={{ backgroundColor: "#FFFFFF" }}
+                >
+                  <div className="flex flex-row justify-between items-center ">
+                    <span
+                      className="inline-block rounded-full px-3 py-1 font-semibold"
+                      style={{
+                        backgroundColor:
+                          laneColors[lane.id as keyof typeof laneColors] ||
+                          laneColors.default,
+                        color: lane.id === "rejected" ? "#ffffff" : "#353945",
+                      }}
+                    >
+                      {lane.title}
+                    </span>
+                    <div className="flex flex-row items-center gap-2 text-xs text-gray-500">
+                      <span
+                        className="cursor-pointer font-light text-xl hover:text-gray-700 "
+                        title="Add Task"
+                      >
+                        +
+                      </span>
+                      <MoreHorizontal />
+                    </div>
+                  </div>
+                </th>
+              ))}
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              {swimlaneData.map((lane) => (
+                <td
+                  key={lane.id}
+                  className="align-top px-4 py-2 h-[500px] border-r border-gray-300 last:border-r-0 border-b"
+                  style={{ backgroundColor: "#F4F5F6" }}
+                >
+                  <div className="overflow-y-auto h-full">
+                    <Swimlane
+                      id={lane.id}
+                      title={lane.title}
+                      tasks={lane.tasks}
+                    />
+                  </div>
+                </td>
+              ))}
+            </tr>
+          </tbody>
+        </table>
       </div>
       <DragOverlay>
         {activeTask ? (
@@ -144,3 +197,11 @@ const MainBoard = () => {
 };
 
 export default MainBoard;
+
+const laneColors = {
+  "to-do": "#e6e8ec",
+  "in-progress": "#ffa800",
+  approved: "#aee753",
+  rejected: "#f90430",
+  default: "#ffffff",
+};
