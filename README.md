@@ -1,5 +1,5 @@
 
-# Software Engineer – Next.js Swimlane Dashboard
+# Practical Test - Software Engineer Next.Js - Sandaru Madhubhashana
 
 ## Project Overview
 This project involves implementing a swimlane-style task management dashboard using Next.js.
