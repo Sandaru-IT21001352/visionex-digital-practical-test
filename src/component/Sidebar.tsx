@@ -6,7 +6,7 @@ import {
   Folder,
   Grid3X3,
   HelpCircle,
-  Image,
+  ImageIcon,
   LogOut,
   MessageCircle,
   Users,
@@ -22,7 +22,7 @@ const Sidebar = () => {
         <div className="flex items-center justify-between  px-3 py-2 mb-4 rounded-[6px] border-2 border-(--root-neutral-neutral-7)">
           <div className="flex items-center space-x-2">
             <div className="w-11 h-11 bg-(--root-neutral-neutral-3) rounded-full flex items-center justify-center">
-              <Image className="w-4 h-4 text-white" />
+              <ImageIcon className="w-4 h-4 text-white" />
             </div>
             <div className="flex flex-col">
               <span className="text-(--root-neutral-neutral-5) text-sm">

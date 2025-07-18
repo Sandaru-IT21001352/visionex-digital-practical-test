@@ -2,7 +2,12 @@ import React from "react";
 import { useSortable } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
 import { Task } from "@/types";
-import { Calendar, Image, MessageCircle, MoreHorizontal } from "@/assets/icons";
+import {
+  Calendar,
+  ImageIcon,
+  MessageCircle,
+  MoreHorizontal,
+} from "@/assets/icons";
 import PriorityTag from "./atoms/PriorityTag";
 
 const DraggableTask = ({
@@ -73,7 +78,7 @@ const DraggableTask = ({
                   zIndex: index + 1,
                 }}
               >
-                <Image className="w-2 h-2 text-white" />
+                <ImageIcon className="w-2 h-2 text-white" />
               </div>
             ))}
             {task.numberOfAssignees && task.numberOfAssignees > 3 && (
@@ -94,7 +99,7 @@ const DraggableTask = ({
         </div>
         {task.image && (
           <div className="w-full h-[90px] bg-(--root-neutral-neutral-3) rounded-md flex items-center justify-center">
-            <Image className="w-4 h-4 text-white" />
+            <ImageIcon className="w-4 h-4 text-white" />
           </div>
         )}
         <hr className="my-2 border-(--root-neutral-neutral-6)" />
