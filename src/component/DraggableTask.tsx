@@ -1,17 +1,18 @@
 import React from "react";
 import { useSortable } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
+import { Task } from "@/types";
+import { Calendar, Image, MessageCircle, MoreHorizontal } from "@/assets/icons";
+import PriorityTag from "./atoms/PriorityTag";
 
-type DraggableTaskProps = {
-  id: number;
-  title: string;
-  isDragging?: boolean;
-};
-
-const DraggableTask: React.FC<DraggableTaskProps> = ({
+const DraggableTask = ({
   id,
-  title,
+  task,
   isDragging = false,
+}: {
+  id: number;
+  task: Task;
+  isDragging?: boolean;
 }) => {
   const {
     attributes,
@@ -35,15 +36,110 @@ const DraggableTask: React.FC<DraggableTaskProps> = ({
       {...attributes}
       {...listeners}
       className={`
-        border border-gray-300 rounded-lg p-4 mb-4 cursor-move w-full 
-        flex items-center justify-center bg-white shadow-sm
+        flex items-center justify-center bg-white
+        border border-(--root-neutral-neutral-6) rounded-xl p-2 mb-4 cursor-move w-full 
         hover:shadow-md transition-shadow duration-200
         ${isDragging ? "rotate-2" : ""}
       `}
     >
-      <span className="text-sm font-medium text-gray-800">{title}</span>
+      <div className="min-h-35 w-full flex flex-col gap-2">
+        <div className="flex flex-row items-center justify-between text-(--root-neutral-neutral-5)">
+          <div className="flex flex-row items-center h-full gap-2">
+            <div
+              className={`h-2 w-2 rounded-xs bg-(--task-${
+                categoryColors[task.category]
+              })`}
+            ></div>
+            <p className="text-xs ">{task.category}</p>
+          </div>
+          <div className="">
+            <MoreHorizontal className="w-4 h-4" />
+          </div>
+        </div>
+        <div
+          className="
+        font-medium
+        "
+        >
+          {task.title}
+        </div>
+        <div className="flex items-center gap-2 mb-auto">
+          <div className="flex flex-row items-center gap-0">
+            {task.firstThreeAssigneesImages?.map((image, index) => (
+              <div
+                key={index}
+                className="w-5 h-5 bg-(--root-neutral-neutral-3) rounded-full flex items-center justify-center border-2 border-white"
+                style={{
+                  marginLeft: index === 0 ? 0 : -10, // overlap by 15px to the left
+                  zIndex: index + 1,
+                }}
+              >
+                <Image className="w-2 h-2 text-white" />
+              </div>
+            ))}
+            {task.numberOfAssignees && task.numberOfAssignees > 3 && (
+              <div
+                className="w-5 h-5 rounded-full flex items-center justify-center border-2 border-white text-[9px] bg-(--root-neutral-neutral-6)"
+                style={{
+                  marginLeft: -10,
+                  zIndex: (task.firstThreeAssigneesImages?.length || 0) + 1,
+                }}
+              >
+                +
+                {task.numberOfAssignees -
+                  (task.firstThreeAssigneesImages?.length || 0)}
+              </div>
+            )}
+          </div>
+          <PriorityTag priority={task.priority} />
+        </div>
+        {task.image && (
+          <div className="w-full h-[90px] bg-(--root-neutral-neutral-3) rounded-md flex items-center justify-center">
+            <Image className="w-10 h-10 text-white" />
+          </div>
+        )}
+        <hr className="my-2 border-(--root-neutral-neutral-6)" />
+        <div className="flex  text-(--root-neutral-neutral-4)">
+          <MessageCircle className="w-4 h-4 " />
+          <span className="text-xs ml-1">{task.comments}</span>
+          {task.dueDate && (
+            <>
+              <Calendar className="w-4 h-4  ml-2" />
+              <span className="text-xs  ml-1">
+                {(() => {
+                  if (!task.dueDate) return null;
+                  const due = new Date(task.dueDate);
+                  const today = new Date("2022-04-09T00:00:01Z"); //TODO: hardcoded date for testing
+                  today.setHours(0, 0, 0, 0);
+                  const tomorrow = new Date(today);
+                  tomorrow.setDate(today.getDate() + 1);
+
+                  if (due.getDate() === today.getDate()) {
+                    return "Today";
+                  } else if (due.getDate() === tomorrow.getDate()) {
+                    return "Tomorrow";
+                  } else {
+                    return due.toISOString().slice(0, 10);
+                  }
+                })()}
+              </span>
+            </>
+          )}
+        </div>
+      </div>
     </div>
   );
 };
 
 export default DraggableTask;
+
+// MARK : temporary category color mapping
+const categoryColors: Record<string, string> = {
+  Research: "1",
+  Design: "2",
+  Other: "6",
+  Feedback: "4",
+  Presentation: "3",
+  "UX Research": "5",
+  Interface: "7",
+};

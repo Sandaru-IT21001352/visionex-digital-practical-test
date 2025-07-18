@@ -53,7 +53,7 @@ const useTaskStore = create<TaskStore>()(
         return tasks.filter(
           (task) =>
             task.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-            task.description?.toLowerCase().includes(searchQuery.toLowerCase())
+            task.category?.toLowerCase().includes(searchQuery.toLowerCase())
         );
       },
 

@@ -2,7 +2,7 @@
   {
     "id": 1,
     "title": "User Interview",
-    "description": "Research",
+    "category": "Research",
     "status": "to-do",
     "priority": "medium",
     "firstThreeAssigneesImages": ["user1", "user2", "user3"],
@@ -13,7 +13,7 @@
   {
     "id": 2,
     "title": "Design System",
-    "description": "Design",
+    "category": "Design",
     "status": "to-do",
     "priority": "high",
     "firstThreeAssigneesImages": ["user2", "user3", "user4"],
@@ -23,7 +23,7 @@
   {
     "id": 3,
     "title": "Speech",
-    "description": "Other",
+    "category": "Other",
     "status": "to-do",
     "priority": "low",
     "firstThreeAssigneesImages": ["user3", "user4", "user5"],
@@ -34,8 +34,9 @@
   {
     "id": 4,
     "title": "Wireframe",
-    "description": "Design",
+    "category": "Design",
     "status": "to-do",
+    "image": "https://example.com/image.png",
     "priority": "high",
     "firstThreeAssigneesImages": ["user4", "user5"],
     "numberOfAssignees": 2,
@@ -44,7 +45,7 @@
   {
     "id": 5,
     "title": "UI Design",
-    "description": "Design",
+    "category": "Design",
     "status": "in-progress",
     "priority": "high",
     "firstThreeAssigneesImages": ["user5", "user6", "user7"],
@@ -55,7 +56,7 @@
   {
     "id": 6,
     "title": "Check Clients Feedback",
-    "description": "Feedback",
+    "category": "Feedback",
     "status": "in-progress",
     "priority": "medium",
     "firstThreeAssigneesImages": ["user6", "user7", "user8"],
@@ -66,7 +67,7 @@
   {
     "id": 7,
     "title": "Copyright",
-    "description": "Presentation",
+    "category": "Presentation",
     "status": "in-progress",
     "priority": "low",
     "firstThreeAssigneesImages": ["user7"],
@@ -77,9 +78,11 @@
   {
     "id": 8,
     "title": "Filter sorting",
-    "description": "UX Research",
+    "category": "UX Research",
     "status": "in-progress",
     "priority": "medium",
+    "image": "https://example.com/image.png",
+
     "firstThreeAssigneesImages": ["user8"],
     "numberOfAssignees": 1,
     "comments": 0
@@ -87,7 +90,7 @@
   {
     "id": 9,
     "title": "Prototype",
-    "description": "Design",
+    "category": "Design",
     "status": "approved",
     "priority": "high",
     "firstThreeAssigneesImages": ["user9", "user10", "user11"],
@@ -97,9 +100,10 @@
   {
     "id": 10,
     "title": "Detail Page",
-    "description": "Design",
+    "category": "Design",
     "status": "approved",
     "priority": "high",
+    "image": "https://example.com/image.png",
     "firstThreeAssigneesImages": ["user10", "user11", "user12"],
     "numberOfAssignees": 4,
     "comments": 26
@@ -107,7 +111,7 @@
   {
     "id": 11,
     "title": "Animation preloaders",
-    "description": "Interface",
+    "category": "Interface",
     "status": "approved",
     "priority": "medium",
     "firstThreeAssigneesImages": ["user11", "user12"],
@@ -117,7 +121,7 @@
   {
     "id": 12,
     "title": "Sorting category",
-    "description": "UX Research",
+    "category": "UX Research",
     "status": "approved",
     "priority": "low",
     "firstThreeAssigneesImages": ["user12", "user13", "user14"],
@@ -127,7 +131,7 @@
   {
     "id": 13,
     "title": "Group Management",
-    "description": "Design",
+    "category": "Design",
     "status": "rejected",
     "priority": "high",
     "firstThreeAssigneesImages": ["user13", "user14", "user15"],
@@ -138,7 +142,7 @@
   {
     "id": 14,
     "title": "Design System",
-    "description": "Design",
+    "category": "Design",
     "status": "rejected",
     "priority": "high",
     "firstThreeAssigneesImages": ["user14", "user15", "user16"],
@@ -149,7 +153,7 @@
   {
     "id": 15,
     "title": "Slider controls",
-    "description": "Interface",
+    "category": "Interface",
     "status": "rejected",
     "priority": "medium",
     "firstThreeAssigneesImages": ["user15", "user16", "user1"],

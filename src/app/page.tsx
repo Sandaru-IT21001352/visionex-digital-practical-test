@@ -29,7 +29,7 @@ const Home = () => {
   const { tasks, updateTaskStatus, getTaskForSwimlane } = useTaskStore();
   const [activeId, setActiveId] = useState<number | null>(null);
 
-  // useState, useEffect hook
+  // Hydration state to avoid SSR issues
   const [hydrated, setHydrated] = useState<boolean>(false);
   useEffect(() => {
     setHydrated(true);
@@ -117,7 +117,7 @@ const Home = () => {
       onDragOver={handleDragOver}
       onDragEnd={handleDragEnd}
     >
-      <div className="flex flex-row justify-between items-start p-4 space-x-4 bg-gray-100 min-h-screen">
+      <div className="flex flex-row justify-between items-start p-4 space-x-4 bg-gray-100 min-h-screen text-sm">
         {swimlaneData.map((lane) => (
           <Swimlane
             key={lane.id}
@@ -131,7 +131,7 @@ const Home = () => {
         {activeTask ? (
           <DraggableTask
             id={activeTask.id}
-            title={activeTask.title}
+            task={activeTask}
             isDragging={true}
           />
         ) : null}

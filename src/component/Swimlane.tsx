@@ -25,16 +25,14 @@ const Swimlane: React.FC<SwimlaneProps> = ({ id, title, tasks }) => {
       ref={setNodeRef}
       className={`
         border border-gray-300 rounded-lg p-4 mb-4 w-full min-h-[200px]
-        transition-colors duration-200
-        ${isOver ? "bg-blue-50 border-blue-300" : "bg-white"}
-      `}
+        transition-colors duration-200 bg-[#F4F5F6] `}
     >
       <h2 className="text-lg font-semibold text-gray-800">{title}</h2>
 
       <SortableContext items={taskIds} strategy={verticalListSortingStrategy}>
         <div className="space-y-2">
           {tasks.map((task) => (
-            <DraggableTask key={task.id} id={task.id} title={task.title} />
+            <DraggableTask key={task.id} id={task.id} task={task} />
           ))}
         </div>
       </SortableContext>
