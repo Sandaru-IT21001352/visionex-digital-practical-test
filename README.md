@@ -1,4 +1,25 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+
+# Software Engineer – Next.js Swimlane Dashboard
+
+## Project Overview
+This project involves implementing a swimlane-style task management dashboard using Next.js.
+
+## Features
+
+- Swimlane Layout: Tasks organized by status in intuitive swimlanes
+- Drag & Drop: Move tasks between swimlanes with smooth animations
+- Real-time Search: Dynamic filtering as you type
+- Data Persistence: Tasks persist across browser sessions
+
+# Tech Stack
+- Framework: Next.js
+- Language: TypeScript
+- Styling: TailwindCSS
+- State Management: Zustand
+- Additional library used for Drag-and-Drop functionality: @dnd-kit (https://www.npmjs.com/package/@dnd-kit/core)
+
+
+
 
 ## Getting Started
 

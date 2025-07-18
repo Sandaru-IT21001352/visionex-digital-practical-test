@@ -12,12 +12,11 @@ import {
   DragOverEvent,
   DragEndEvent,
 } from "@dnd-kit/core";
-import { arrayMove, sortableKeyboardCoordinates } from "@dnd-kit/sortable";
+import { sortableKeyboardCoordinates } from "@dnd-kit/sortable";
 import useTaskStore from "@/stores/taskStore";
 import Swimlane from "@/component/Swimlane";
 import DraggableTask from "@/component/DraggableTask";
 import { TaskStatus } from "@/types";
-import { get } from "http";
 import { MoreHorizontal } from "@/assets/icons";
 
 const SWIMLANES = [
