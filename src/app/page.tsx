@@ -17,6 +17,7 @@ import useTaskStore from "@/stores/taskStore";
 import Swimlane from "@/component/Swimlane";
 import DraggableTask from "@/component/DraggableTask";
 import { TaskStatus } from "@/types";
+import { get } from "http";
 
 const SWIMLANES = [
   { id: "to-do" as TaskStatus, title: "Todo" },
@@ -26,7 +27,7 @@ const SWIMLANES = [
 ];
 
 const Home = () => {
-  const { tasks, updateTaskStatus, getTaskForSwimlane } = useTaskStore();
+  const { getFilteredTasks, updateTaskStatus } = useTaskStore();
   const [activeId, setActiveId] = useState<number | null>(null);
 
   // Hydration state to avoid SSR issues
@@ -35,13 +36,13 @@ const Home = () => {
     setHydrated(true);
   }, []);
 
-  // Group tasks by swimlane
+  const filteredTask = getFilteredTasks();
   const swimlaneData = useMemo(() => {
     return SWIMLANES.map((lane) => ({
       ...lane,
-      tasks: getTaskForSwimlane(lane.id),
+      tasks: filteredTask.filter((task) => task.status === lane.id),
     }));
-  }, [tasks, getTaskForSwimlane]);
+  }, [filteredTask]);
 
   // Sensors
   const sensors = useSensors(
@@ -54,7 +55,7 @@ const Home = () => {
   // Find which swimlane a task belongs to
   const findContainer = (id: number | string): TaskStatus | null => {
     const taskId = typeof id === "string" ? parseInt(id) : id;
-    const task = tasks.find((t) => t.id === taskId);
+    const task = filteredTask.find((t) => t.id === taskId);
     return task?.status || null;
   };
 
@@ -95,7 +96,7 @@ const Home = () => {
 
     if (!targetStatus) return;
 
-    const currentTask = tasks.find((t) => t.id === activeId);
+    const currentTask = filteredTask.find((t) => t.id === activeId);
     if (!currentTask) return;
 
     // Only update if status actually changed
@@ -104,7 +105,9 @@ const Home = () => {
     }
   };
 
-  const activeTask = activeId ? tasks.find((t) => t.id === activeId) : null;
+  const activeTask = activeId
+    ? filteredTask.find((t) => t.id === activeId)
+    : null;
 
   if (!hydrated) {
     return <div>Loading...</div>;

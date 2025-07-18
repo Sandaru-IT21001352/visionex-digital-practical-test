@@ -46,9 +46,8 @@ const DraggableTask = ({
         <div className="flex flex-row items-center justify-between text-(--root-neutral-neutral-5)">
           <div className="flex flex-row items-center h-full gap-2">
             <div
-              className={`h-2 w-2 rounded-xs bg-(--task-${
-                categoryColors[task.category]
-              })`}
+              className={`h-2 w-2 rounded-xs`}
+              style={{ backgroundColor: categoryColors[task.category] }}
             ></div>
             <p className="text-xs ">{task.category}</p>
           </div>
@@ -95,7 +94,7 @@ const DraggableTask = ({
         </div>
         {task.image && (
           <div className="w-full h-[90px] bg-(--root-neutral-neutral-3) rounded-md flex items-center justify-center">
-            <Image className="w-10 h-10 text-white" />
+            <Image className="w-4 h-4 text-white" />
           </div>
         )}
         <hr className="my-2 border-(--root-neutral-neutral-6)" />
@@ -135,11 +134,11 @@ export default DraggableTask;
 
 // MARK : temporary category color mapping
 const categoryColors: Record<string, string> = {
-  Research: "1",
-  Design: "2",
-  Other: "6",
-  Feedback: "4",
-  Presentation: "3",
-  "UX Research": "5",
-  Interface: "7",
+  Research: "#aee753",
+  Design: "#f90430",
+  Other: "#777e90",
+  Feedback: "#3772ff",
+  Presentation: "#ff5c00",
+  "UX Research": "#ffa800",
+  Interface: "#353945",
 };
