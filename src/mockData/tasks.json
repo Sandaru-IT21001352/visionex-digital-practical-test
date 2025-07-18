@@ -155,15 +155,6 @@
     "firstThreeAssigneesImages": ["user15", "user16", "user1"],
     "numberOfAssignees": 8,
     "comments": 31
-  },
-  {
-    "id": 16,
-    "title": "Slider controls",
-    "description": "Design",
-    "status": "rejected",
-    "priority": "medium",
-    "firstThreeAssigneesImages": ["user16"],
-    "numberOfAssignees": 1,
-    "comments": 0
   }
+
 ]

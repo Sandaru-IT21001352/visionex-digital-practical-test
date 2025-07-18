@@ -3,6 +3,7 @@ import { Poppins } from "next/font/google";
 import "./globals.css";
 import Sidebar from "@/component/Sidebar";
 import Header from "@/component/Header";
+import Hydration from "@/stores/hydaration";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -30,6 +31,7 @@ export default function RootLayout({
       <body
         className={`${poppins.variable}  antialiased divide-y divide-[#E6E8EC] `}
       >
+        <Hydration />
         <Header />
 
         <div

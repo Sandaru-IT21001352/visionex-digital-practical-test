@@ -23,6 +23,8 @@ export interface TaskStore {
   setTasks: (tasks: Task[]) => void;
   setSearchQuery: (query: string) => void;
   getFilteredTasks: () => Task[];
+  updateTaskStatus: (taskId: number, newStatus: TaskStatus) => void;
+  getTaskForSwimlane: (status: TaskStatus) => Task[];
 }
 
 export interface SwimlaneConfig {
