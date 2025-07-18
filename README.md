@@ -8,7 +8,7 @@ This project involves implementing a swimlane-style task management dashboard us
 
 - Swimlane Layout: Tasks organized by status in intuitive swimlanes
 - Drag & Drop: Move tasks between swimlanes with smooth animations
-- Real-time Search: Dynamic filtering as you type
+- Real-time Search: Dynamic filtering as you type into the search feild
 - Data Persistence: Tasks persist across browser sessions
 
 # Tech Stack
